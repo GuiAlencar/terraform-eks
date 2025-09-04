@@ -13,6 +13,7 @@ terraform {
       version = "2.8.0"
     }
   }
+  # como a ideia é usar modulos remotos não podemos deixar esse backend aqui, porque ele será baixado por outras pessoas que usarao seu proprio remote state
   backend "s3" {
     bucket = "comunidadedevops"
     key    = "dev/terraform.tfstate"
@@ -21,7 +22,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 }
 
 provider "kubernetes" {
